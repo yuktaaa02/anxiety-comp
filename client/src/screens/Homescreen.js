@@ -10,7 +10,7 @@ const moods = [
   { label: 'Awful', icon: CloudRain, color: '#F44336', value: 1 },
 ];
 
-export default function App() {
+export default function HomeScreen() {
   const [selectedMood, setSelectedMood] = useState(null);
 
   return (
