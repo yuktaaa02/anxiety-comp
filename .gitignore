@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+.expo/
+dist/
+
+# Environment Variables
+.env
+.env.local
+
+# Debugging
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS Files
+.DS_Store
+Thumbs.db
