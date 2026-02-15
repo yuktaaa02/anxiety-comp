@@ -33,10 +33,25 @@ export default function HomeScreen() {
     setAnswers({ ...answers, [key]: value });
   };
 
-  const handleSubmit = () => {
-    Alert.alert("Check-in Complete", "Your responses have been saved for your weekly insights!");
-    // Later, this is where we will call your Backend API
-  };
+ const handleSubmit = async () => {
+  try {
+    // Replace YOUR_IP_ADDRESS with your computer's local IP (e.g., 192.168.1.5)
+    // Do not use 'localhost' as it won't work on a real phone
+    const response = await fetch('http://192.168.31.202:5000/api/checkin', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(answers),
+    });
+
+    if (response.ok) {
+      Alert.alert("Success!", "Your check-in has been saved to the cloud.");
+      setAnswers({}); // Clear the form
+    }
+  } catch (error) {
+    Alert.alert("Error", "Could not connect to the server.");
+    console.error(error);
+  }
+};
 
   return (
     <SafeAreaView style={styles.safeArea}>
